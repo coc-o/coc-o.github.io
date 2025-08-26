@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CocoCo Redirect</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #00aaff; /* sama dengan background gambar */
-        }
-        img {
-            max-width: 80%;
-            height: auto;
-        }
-    </style>
-    <script>
-        // Redirect ke aplikasi CocoCo
-        window.onload = function() {
-            // Redirect ke coco.co://
-            window.location.href = "coco.co://";
-            
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CocoCo Redirect</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #00aaff; /* sama dengan background gambar */
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      // Ambil query param "id" dari URL
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      // Kalau ada id, redirect ke coco.co://id
+      if (id) {
+        window.location.href = "coco.co://" + id;
+      } else {
+        // fallback kalau id kosong → bisa ke home atau app tanpa parameter
+        window.location.href = "coco.co://";
+      }
+    }
+  </script>
 </head>
 <body>
-    <img src="horizontal.png" alt="CocoCo Logo">
+  <img src="horizontal.png" alt="CocoCo Logo">
 </body>
 </html>
